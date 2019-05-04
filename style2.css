@@ -1,0 +1,172 @@
+body, html {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    margin: 0;
+    background-color: #cccccc;
+}
+
+a {
+    color: #336699;
+    text-decoration: none;
+}
+
+header {
+    padding: 0 32px;
+    /* para que "floten" los elem. de la lista desplegable */
+    height: 72px;
+    background-color: #000000;
+    border-bottom: 1px solid red;
+    /* overflow: hidden; */
+}
+
+.mobileMenu {
+    /* una forma básica de ocultar elementos del browser */
+    display: none;
+}
+
+.logo {
+    float: left;
+    margin: 24px 0;
+}
+
+nav {
+    float: right;
+}
+
+nav ul {
+    padding: 0;
+    margin: 0;
+    height: 72px;
+}
+
+nav ul li {
+    list-style: none;
+    float: left;
+    margin-left: 24px;
+    /* para ubicar los items del submenú uno debajo del otro */
+    /* left: 10px; con esto se movería a la izq pero del contenedor ul */
+    position: relative;
+}
+
+nav ul li:hover {
+    border-top: 3px solid #ffffff;
+}
+
+nav ul li:hover ul.submenu {
+    display: block;
+}
+
+/* nav ul li ul.submenu {} equivale al bloque siguiente */
+
+nav ul li a {
+    line-height: 72px;
+    display: block;
+}
+
+ul.submenu {
+    display: none;
+    position: absolute;
+    /* left: 10px; con esto se movería a la izq. de todo */
+    background-color: darkslategray;
+    border-radius: 4px;
+    border: 1px solid crimson;
+    height: auto;
+    padding-bottom: 16px 0;
+    top: 64px;
+    left: 0;
+}
+
+ul.submenu li {
+    width: 100%;
+    margin: 0;
+    border-bottom: 2px solid lime;
+}
+
+ul.submenu li:last-child {
+    border-bottom: none;
+}
+
+ul.submenu li a {
+    line-height: 32px;
+    width: 80px;
+    padding: 0 24px;
+}
+
+
+
+/* ********************************************* */
+/* A PARTIR DE ACÁ TRABAJAMOS CON EL MENÚ MOBILE */
+/* ********************************************* */
+
+
+
+@media only screen and (max-width: 600px) {
+    .logo {
+        color: red;
+    }
+
+    .mobileMenu {
+        display: block;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 2;
+    }
+
+    nav {
+        display: block;
+    }
+
+    nav ul {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+
+        /* con esto vamos a hacer que el menú no se vea */
+        left: 100%;
+
+        background-color: black;
+        height: auto;
+        z-index: 1;
+        width: 100vw;
+        transition: all 0.5s;
+    }
+
+    nav ul.open {
+        /* para que se mueva para adentro, contrario a left: 0, duh :v */
+        transform: translate(-100vw);
+    }
+
+    nav ul li {
+        width: 100%;
+    }
+
+    nav ul li a {
+        color: #ffffff;
+        line-height: 48px;
+    }
+
+    ul.submenu {
+        display: block;
+
+        /* valor por defecto que tienen todos los elem. */
+        position: initial;
+
+        background-color: transparent;
+        border: none;
+    }
+
+    ul.submenu li {
+        border-bottom: none;
+    }
+
+    nav ul li:hover {
+        border-top: none;
+    }
+}
+
+/* position: fixed el elem no se mueve */

@@ -1,0 +1,22 @@
+.float {
+    padding: 10px;
+    border: 1px solid red;
+    background-color: pink;
+    /* para poder envolver aunque si achicamos al padre, empezará a esconder a los elem. hijos */
+    overflow: hidden;
+}
+
+div.float.left {
+    float: left;
+}
+
+/* span.clear {
+    display: block;
+    clear: both;
+} */
+
+/* position: absolute hace que el contenedor se salga del flujo */
+
+/* todo elemento absolute necesita una ref en base a la cual empezara a contar esas posiciones */
+
+/* position: relative */
